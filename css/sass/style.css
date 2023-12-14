@@ -8,7 +8,6 @@ body {
   overflow-wrap: break-word;
   display: flex;
   flex-direction: column;
-  height: 100%;
   color: #262526;
 }
 
@@ -55,6 +54,23 @@ a {
 
 .container-fluid {
   font-family: "Barlow", sans-serif;
+  height: 100vh;
+}
+
+.align-items-center {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-home {
+  font-weight: bold;
+  font-size: 7rem;
+  color: #D92332;
+}
+
+.p-text,
+.title-home {
+  font-family: "Rajdhani", sans-serif;
 }
 
 .footer {

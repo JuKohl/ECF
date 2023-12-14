@@ -1,3 +1,21 @@
 .container-fluid {
   font-family: $font-family-barlow;
+  height: 100vh;
+}
+
+.align-items-center {
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.title-home {
+  font-weight: $font-weight;
+  font-size: 7rem;
+  color: $color-red;
+}
+
+.p-text,
+.title-home {
+  font-family: $font-family-rajdhani;
 }
