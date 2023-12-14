@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charles Centin - Photographe - Formulaire de contatct</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Kalam:wght@300&family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,600&family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">  <title>Charles Cantin - Photographe</title>
+</head>
+<body>
+<header class="header">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img id="image_icon" src="./img/icon.png" alt="logo du photographe Charles Cantin">
+    <h2 class="navbar-brand">Charles Cantin</h2>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="1-index.html">Accueil</a>
+        </li>
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="2-galery.html">Galerie</a>
+        </li>
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="3-prices.html">Tarifs et prestations</a>
+        </li>
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="4-form.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<!-- main -->
+<main class="container-fluid">
+<!-- form -->
+<div id="form">
+  <h2 class="h2Form">Formulaire de contact</h2>
+  <form class="form__contact" action="request.php" method="post" onsubmit="return validateEmail()">
+    <fieldset id="informations">
+      <legend><h2>Informations</h2></legend>
+      <div class="form__name">
+        <!-- nom prénom -->
+        <label class="labelForm" for="nameAndSurname">Nom & Prénom<sup>*</sup><small>(obligatoire)</small></label>
+        <input id="nameAndSurname" type="text" name="name" placeholder="Votre nom et votre prénom" required>
+      </div>
+      <div class="form__mail">
+        <!-- mail -->
+        <label class="labelForm" for="email">E-mail<sup>*</sup><small>(obligatoire)</small></label>
+        <input id="email" type="email" name="email" placeholder="Votre email" required>
+      </div>
+    </fieldset>
+    <fieldset id="message">
+      <legend><h2>Message</h2></legend>
+      <div class="form__message">
+        <label class="labelForm" for="subject">Message<sup>*</sup><small>(champ à remplir)</small></label>
+        <textarea id="subjectField" name="subject" placeholder="Votre message" style="height:200px" required></textarea>
+      </div>
+      <!-- buttons -->
+      <div class="form__button">
+        <input data-formButtonSend class="btnSend btn-block" type="submit" name="buttonSend" value="Envoyer">
+        <input data-formButtonSendNo class="btnSendNo btn-block" type="reset" name="buttonSendNo" value="Annuler">
+      </div>
+    </fieldset>
+  </form>
+</div>
+</main>
+<!-- footer -->
+<footer class="footer">
+  Suivez-moi sur les réseaux sociaux :<br>
+  <a href="https://www.instagram.com/" target="_blank">
+    <img src="./img/instagram.png" alt="logo d'instagram" class="img-fluid">
+  </a>
+  <a href="https://www.facebook.com/" target="_blank">
+    <img src="./img/facebook.png" alt="logo de facebook" class="img-fluid">
+  </a>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
