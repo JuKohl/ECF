@@ -73,6 +73,17 @@ a {
   font-family: "Rajdhani", sans-serif;
 }
 
+.link-sales {
+  color: #D9777F;
+  padding: 0.2rem;
+}
+
+.link-sales:hover {
+  color: #F2F2F2;
+  background: #D9777F;
+  border-radius: 10px;
+}
+
 .footer {
   background: #F2F2F2;
   font-family: "Rajdhani", sans-serif;

@@ -3,6 +3,7 @@
   height: 100vh;
 }
 
+// home
 .align-items-center {
   flex-direction: column;
   justify-content: center;
@@ -18,4 +19,15 @@
 .p-text,
 .title-home {
   font-family: $font-family-rajdhani;
+}
+
+.link-sales {
+  color: $color-light;
+  padding: 0.2rem;
+}
+
+.link-sales:hover {
+  color: $color-white;
+  background: $color-light;
+  border-radius: 10px;
 }
