@@ -1,0 +1,13 @@
+.footer {
+  background: $color-white;
+  @extend %flex-center-scss;
+  font-family: $font-family-rajdhani;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav-link-footer:hover {
+  color:$color-light;
+}

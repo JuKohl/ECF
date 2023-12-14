@@ -1,5 +1,10 @@
-%flex-center-sass {
+%flex-center-scss {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+%shadow {
+  box-shadow: 0px 0px 5px #262526;
 }

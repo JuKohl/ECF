@@ -1,0 +1,24 @@
+.header {
+  @extend %shadow;
+  font-family: $font-family-rajdhani;
+}
+.navbar-expand-lg {
+  background: $color-white;
+}
+
+#image_icon {
+  max-height: 50px;
+  width: auto;
+  border-radius: 25%;
+  margin: 0.5rem;
+}
+
+.navbar-brand {
+  font-weight: $font-weight;
+  color: $color-red;
+}
+
+.nav-link:hover {
+  color: $color-red;
+  font-weight: $font-weight;
+}

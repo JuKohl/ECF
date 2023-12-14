@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Garage Vincent Parrot</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/sass/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
@@ -13,9 +13,8 @@
 <body>
 <header class="header">
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img id="image_icon" src="" alt="logo du garage de Vincent Parrot">
-    <h2 class="navbar-brand">Garage Vincent Parrot</h2>
+  <nav class="navbar navbar-expand-lg">
+    <img id="image_icon" src="./img/logo-garage.png" alt="logo du garage de Vincent Parrot">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -51,13 +50,13 @@
 </main>
 <!-- footer -->
 <footer class="footer">
-  <nav>
+  <nav class="footer-nav">
     <ul>
       <li>
-        <a href="./6-legal.html">Mentions Légales</a><br>
+        <a class="nav-link-footer" href="./6-legal.html">Mentions Légales</a><br>
       </li>
       <li>
-        <a href="./7-rgpd.html">Politique de Confidentialité</a>
+        <a class="nav-link-footer" href="./7-rgpd.html">Politique de Confidentialité</a>
       </li>
     </ul>
   </nav>
