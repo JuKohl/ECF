@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block title %}Garage V. Parrot - Ventes{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <div class="container">
+  {# {{ form_start(form) }} #}
+  {# {{ form_end(form) }} #}
+  </div>
+</div>
+<div class="breadcrumbs">
+    <ul class="breadcrumb">
+      <li><a href="/">Accueil</a></li>
+      <li><a href="{{ path('app_cars') }}" class="isDisabled">Voitures</a></li>
+    </ul>
+    <div class="go-back-list">
+      <a href="javascript:history.back(1)">Revenir à la page précédente</a>
+    </div>
+  </div>
+
+<div class="filter-cars">
+
+
+                  <article class="filters">
+
+            <div class="filter-group">
+              {# <p class="filter-group-title">Kilométrage</p> #}
+              <label for="customRange2" class="form-label">Example range</label>
+              <input type="range" class="form-range" min="5000" max="50000" id="customRange2">
+              {# <input type="hidden" id="hidden_mininum_kilometer" value="9000"> #}
+              {# <input type="hidden" id="hidden_maximum_kilometer" value="355434"> #}
+              <p id="kilometer_show" class="mb-2">9000km - 355434km</p>
+              <div id="kilometer_range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="width: 100%; left: 0%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
+              <button type="button" id="reset-button-k" class="btn-wire mt-3">Réinitialiser</button>
+            </div>
+            <div class="filter-group">
+              <p class="filter-group-title">Prix</p>
+              <input type="hidden" id="hidden_mininum_price" value="31845">
+              <input type="hidden" id="hidden_maximum_price" value="80734">
+              <p id="price_show" class="mb-2">31845€ - 80734€</p>
+              <div id="price_range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="width: 100%; left: 0%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
+              <button type="button" id="reset-button-p" class="btn-wire mt-3">Réinitialiser</button>
+            </div>
+            <div class="filter-group">
+              <p class="filter-group-title">Année</p>
+              <input type="hidden" id="hidden_mininum_year" value="2009">
+              <input type="hidden" id="hidden_maximum_year" value="2020">
+              <p id="year_show" class="mb-2">2009 - 2020</p>
+              <div id="year_range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header" style="width: 100%; left: 0%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
+              <button type="button" id="reset-button-y" class="btn-wire mt-3">Réinitialiser</button>
+            </div>
+          </article>
+</div>
+<div class="row text-center">
+    {% for car in cars %}
+        {% include "partials/_cars.html.twig"%}
+    {% endfor %}
+</div>
+{% endblock %}

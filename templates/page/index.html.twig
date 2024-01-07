@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %}Garage V. Parrot - Accueil{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('build/images/home.jpg') }}" />
+<h1 class="display-5 fw-bold custom-h1 text-center">Garage V. Parrot</h1>
+<blockquote class="display-6 lh-1 m-3 fw-bold custom-blockquote">Continuons de faire la route ensemble.</blockquote>
+<div class="container-fluid homePage">
+    <div class="px-4 py-5 my-5 text-center">
+        <div class="col-lg-6 mx-auto">
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="#" class="btn btn-primary btn-lg px-4 gap-3">Nous contacter</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center">
+    <p class="lead mb-4">Garage automobile à Toulouse spécialisé dans la répération de carosserie,
+    l'entretien mécanique régulier de tous types de véhicules et dans la vente de voitures d'occasions.</br>
+    Notre volonté est de garantir la sécurité et la performance de votre véhicule.</br>
+    Depuis 15 ans déjà, vous nous faites confiance.</p>
+</div>
+<div class="container px-4 py-5" id="icon-grid">
+    <h2 class="pb-2 border-bottom">Services</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+    {% for service in services %}
+        <div class="col d-flex align-items-start">
+            <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                <use xlink:href="#tools">
+                    <symbol id="tools" viewBox="0 0 16 16">
+                        <path d="M1 0L0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"></path>
+                    </symbol>
+                </use>
+            </svg>
+            <div>
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">{{ service.type }}</h3>
+                <p>{{ service.presentation }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <p>Vous souhaitez plus de renseignements sur les services proposés par le garage. Rendez-vous sur la page
+    <a href="{{ path('app_services') }}">services</a>
+    </p>
+</div>
+<div class="row">
+    <h2>Avis sur le garage</h2>
+    {% if user %}
+        {% include "partials/_formReview.html.twig"%}
+    {% else %}
+        <p>Vous devez être connecté pour pouvoir donner une note. Rendez-vous sur la page
+            <a href="{{ path('app_login') }}">connexion</a>
+        </p>
+    {% endif %}
+</div>
+<div class="carousel-section row">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for key, r in reviews %}
+                <div class="carousel-item {% if key == 0%}active{% endif %}">
+                    <div class="review d-flex flex-column align-items-center justify-content-center">
+                        <div class="rate">
+                        {% for i in 5..1 %}
+                            <label {% if i == r.rate %} class="filled" {% endif %} title="{{ i }} étoiles"></label>
+                        {% endfor %}
+                        </div>
+                        <p>{{ r.review }}</p>
+                        <p>de "{{ r.name }}"</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+{% endblock %}

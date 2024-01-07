@@ -1,0 +1,116 @@
+// assets/styles/global.scss
+
+
+// customize some Bootstrap variables
+$primary: #D92332;
+$secondary: #262526;
+$ligth: #F2F2F2;
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+.rate {
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: left;
+}
+
+.rate input[type="radio"] {
+  display: none;
+}
+
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+
+.rate.enabled:not(:checked) > label:hover,
+.rate.enabled:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+
+.rate.enabled > input:checked + label:hover,
+.rate.enabled > input:checked + label:hover ~ label,
+.rate.enabled > input:checked ~ label:hover,
+.rate.enabled > input:checked ~ label:hover ~ label,
+.rate.enabled > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+}
+
+.homePage {
+  background: url('../images/home.jpg') no-repeat center center;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.custom-h1,
+.custom-blockquote {
+  color: $primary;
+}
+
+.custom-blockquote {
+  font-style: italic;
+  color: $secondary;
+  text-align: center;
+}
+
+.custom-h1 {
+  font-size: 4rem;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+/* header */
+.nav,
+h1,h2,h3,h5 {
+  font-family: 'Rajdhani', sans-serif;
+}
+.nav-link:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+header {
+  box-shadow: 0px 0px 5px $secondary;
+}
+
+/* carousel*/
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: $primary;
+  border-radius: 50%;
+}
+
+.rate > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor: default;
+  font-size:30px;
+  color:#ccc;
+}
+
+.rate > label.filled,
+.rate > label.filled ~ label {
+  color: #ffc700;
+}

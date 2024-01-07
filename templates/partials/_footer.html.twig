@@ -1,0 +1,41 @@
+<div class="container-fluid bg-light">
+  <footer class="py-3 my-4">
+    <div class="row">
+      <section class="col">
+        <div class="footer-local">
+        <p class="footer-local-owner">Garage V. Parrot</p>
+          <div class="footer-phone">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <p>01.23.45.67.89</p>
+          </div>
+          <div class="footer-email">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <p>vparrot@garagevparrot.net</p>
+          </div>
+          <div class="footer-address">
+            <p>45 Avenue du 8 mai 1945 31000 Toulouse</p>
+          </div>
+        </div>
+      </section>
+      <section class="col">
+        <p>Horaires d'ouvertures :</p>
+          <ul>
+            {% for hour in hours %}
+              <li>{{ hour.day }} : {{ hour.hour }}</li>
+            {% endfor %}
+          </ul>
+      </section>
+    </div>
+    <div>
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="{{ path('app_home') }}" class="nav-link px-2 text-body-secondary">Accueil</a></li>
+        <li class="nav-item"><a href="{{ path('app_services') }}" class="nav-link px-2 text-body-secondary">Services</a></li>
+        <li class="nav-item"><a href="{{ path('app_cars') }}" class="nav-link px-2 text-body-secondary">Ventes</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Mentions légales</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">RGPD</a></li>
+      </ul>
+      <p class="text-center text-body-secondary">© 2023</p>
+    </div>
+  </footer>
+</div>

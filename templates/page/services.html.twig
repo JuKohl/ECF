@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Garage V. Parrot - Services{% endblock %}
+{% block body %}
+<div class="container col-xxl-8 px-4 py-5">
+    {% for service in services %}
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            {% if service.imageName %}
+                <img src="{{ vich_uploader_asset(service, 'imageFile') }}" class="card-img-top" alt="photo de {{ service.type }}">
+                {% else %}
+                <img src="{{ asset('build/images/default_image.png') }}" class="card-img-top" alt="photo de">
+            {% endif %}
+        </div>
+        <div class="col-lg-6">
+            <h5 class="card-title">{{ service.type }}</h5>
+                <p class="lead">{{ service.description }}</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="#" class="btn btn-primary btn-lg px-4 me-md-2">Contacter l'atelier</a>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

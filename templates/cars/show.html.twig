@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="breadcrumbs">
+  <ul class="breadcrumb">
+    <li><a href="/">Accueil</a></li>
+    <li><a href="{{ path('app_cars') }}" class="isDisabled">Voitures d'occasion</a></li>
+  </ul>
+  <div class="go-back-list">
+    <a href="javascript:history.back(1)">Revenir à la page précédente</a>
+  </div>
+</div>
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+  <div class="col-10 col-sm-8 col-lg-4">
+  {% if car.imageName %}
+    <img src="{{ vich_uploader_asset(car, 'imageFile') }}" class="card-img-top" alt="photo de {{ car.brand }}">
+  {% else %}
+  <img src="{{ asset('build/images/default-image.png') }}" class="card-img-top" alt="photo de {{ car.brand }}">
+  {% endif %}
+  </div>
+  <div class="col-lg-8">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ car.brand }}</h1>
+    <p class="lead">{{ car.description }}</p>
+    <div class="d-grid gap-2 justify-content-md-start">
+      <p class="card-text">{{ car.model }}</p>
+      <p class="card-text">{{ car.releaseYear }}</p>
+      <p class="card-text">{{ car.price }} €</p>
+      <p class="card-text">{{ car.technical }}</p>
+      <p class="card-text">{{ car.mileage }} km</p>
+      <p class="card-text">{{ car.feature }}</p>
+      <p class="card-text">{{ car.equipement }}</p>
+      <p class="card-text">{{ car.moreOption }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
