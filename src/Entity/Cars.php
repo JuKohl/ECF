@@ -63,7 +63,6 @@ class Cars
     #[ORM\Column(length: 255)]
     private ?string $model = null;
 
-
     // #[ORM\Column(nullable: true)]
     // private ?\DateTimeImmutable $updatedAt = null;  
     
@@ -248,4 +247,5 @@ class Cars
 
         return $this;
     }
+
 }

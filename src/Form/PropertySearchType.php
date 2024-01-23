@@ -3,58 +3,61 @@
 namespace App\Form;
 
 use App\Entity\PropertySearch;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PropertySearchType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('minMileage', IntegerField::class, [
+            ->add('minMileage', IntegerType::class, [
                 'required' => false,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Kilométrage'
                     ]
             ])
-            ->add('maxMileage', IntegerField::class, [
+            ->add('maxMileage', IntegerType::class, [
                 'required' => false,
                 'label' => false
             ])
-            ->add('minReleaseYear', IntegerField::class, [
+            ->add('minReleaseYear', IntegerType::class, [
                 'required' => false,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Année'
                     ]
             ])
-            ->add('maxReleaseYear', IntegerField::class, [
+            ->add('maxReleaseYear', IntegerType::class, [
                 'required' => false,
                 'label' => false
             ])
-            ->add('minPrice', IntegerField::class, [
+            ->add('minPrice', IntegerType::class, [
                 'required' => false,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Prix'
                     ]
             ])
-            ->add('maxPrice', IntegerField::class, [
+            ->add('maxPrice', IntegerType::class, [
                 'required' => false,
                 'label' => false
             ])
-        ;
+            ->add ('submit', SubmitType::class, [
+                'label' => 'Filter',
+            ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => PropertySearch::class,
             'method' => 'get',
-            'csrf_protection' => false
+            'csrf_protection' => false,
         ]);
     }
 }

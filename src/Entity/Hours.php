@@ -63,4 +63,5 @@ class Hours
 
         return $this;
     }
+
 }

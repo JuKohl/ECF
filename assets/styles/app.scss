@@ -12,7 +12,7 @@ $ligth: #F2F2F2;
 .rate {
   display: flex;
   flex-flow: row-reverse;
-  justify-content: left;
+  justify-content: center;
 }
 
 .rate input[type="radio"] {
@@ -48,6 +48,13 @@ $ligth: #F2F2F2;
 .rate.enabled > input:checked ~ label:hover ~ label,
 .rate.enabled > label:hover ~ input:checked ~ label {
   color: #c59b08;
+}
+
+.reviewContainer, 
+#review_review {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 body {

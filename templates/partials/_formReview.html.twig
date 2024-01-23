@@ -1,6 +1,8 @@
-{{ form_start(form) }}
-  {{ form_widget(form) }}
-
-  <button class="btn btn-outline-primary">Donner mon avis</button>
-
-{{ form_end(form) }}
+{% block form_review %}
+  <div class="reviewContainer">
+    {{ form_start(form) }}
+      {{ form_widget(form) }}
+      <button class="btn myAdviceBtn btn-outline-primary mt-4">Donner mon avis</button>
+    {{ form_end(form) }}
+  </div>
+{% endblock %}

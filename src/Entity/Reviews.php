@@ -27,8 +27,13 @@ class Reviews
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -83,14 +88,14 @@ class Reviews
         return $this;
     }
 
-    public function getName(): ?string
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->name;
+        return $this->createdAt;
     }
 
-    public function setName(string $name): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
-        $this->name = $name;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

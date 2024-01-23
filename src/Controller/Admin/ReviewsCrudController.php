@@ -29,11 +29,9 @@ class ReviewsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         // yield from parent::configureFields($pageName);
-        yield TextField::new('review', 'Avis')
-        ->setFormTypeOption('disabled', 'disabled');
+        yield TextField::new('review', 'Avis');
         yield BooleanField::new('approved', 'Approuvée');
-        yield TextField::new('name', 'Identité')
-            ->setFormTypeOption('disabled', 'disabled');
+        //yield TextField::new('name', 'Identité');
         yield ChoiceField::new('rate', 'Notes')->setChoices([
             '1' => '1',
             '2' => '2',

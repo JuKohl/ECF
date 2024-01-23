@@ -21,6 +21,44 @@ class CarsRepository extends ServiceEntityRepository
         parent::__construct($registry, Cars::class);
     }
 
+    public function findByFilters($minMileage, $maxMileage, $minReleaseYear, $maxReleaseYear, $minPrice, $maxPrice)
+    {
+        $query = $this->createQueryBuilder('c');
+
+        if ($minMileage) 
+        {
+            $query->andWhere('c.mileage >= :minMileage')
+                ->setParameter('minMileage', $minMileage);
+        }
+
+        if ($maxMileage) {
+            $query->andWhere('c.mileage <= :maxMileage')
+                ->setParameter('maxMileage', $maxMileage);
+        }
+
+        if ($minReleaseYear) {
+            $query->andWhere('c.ReleaseYear >= :minReleaseYear')
+                ->setParameter('minReleaseYear', $minReleaseYear);
+        }
+
+        if ($maxReleaseYear) {
+            $query->andWhere('c.ReleaseYear <= :maxReleaseYear')
+                ->setParameter('maxReleaseYear', $maxReleaseYear);
+        }
+
+        if ($minPrice) {
+            $query->andWhere('c.Price >= :minPrice')
+                ->setParameter('minPrice', $minPrice);
+        }
+
+        if ($maxPrice) {
+            $query->andWhere('c.Price <= :maxPrice')
+                ->setParameter('maxPrice', $maxPrice);
+        }
+
+    return $query->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Cars[] Returns an array of Cars objects
 //     */

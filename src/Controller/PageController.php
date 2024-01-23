@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
-    #[Route('/', name: 'app_home', methods: ['GET'])]
+    #[Route('/', name: 'app_home')]
     public function index(HoursRepository $hoursRepository, ServicesRepository $servicesRepository, 
                         Request $request, EntityManagerInterface $entityManagerInterface, Security $security, 
                         ReviewsRepository $reviewsRepository): Response
@@ -40,7 +40,8 @@ class PageController extends AbstractController
             }
             $form = $this->createForm(ReviewType::class, $newReview);
             $form->handleRequest($request);
-            
+
+            $newReview->setCreatedAt(new \DateTimeImmutable());
 
             if($form->isSubmitted() && $form->isValid()){
                 $entityManagerInterface->persist($newReview);
@@ -58,7 +59,7 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/services', name: 'app_services', methods: ['GET'])]
+    #[Route('/services', name: 'app_services')]
     public function services(HoursRepository $hoursRepository, ServicesRepository $servicesRepository): Response
     {
         $hours = $hoursRepository->findAll();
