@@ -3,15 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\ChangePasswordFormType;
 use App\Form\UserType;
-use App\Repository\HoursRepository;
 use Doctrine\ORM\EntityManager;
+use App\Repository\HoursRepository;
+use App\Form\ChangePasswordFormType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
@@ -25,17 +26,11 @@ class UserController extends AbstractController
     {
         $hours = $hoursRepository->findAll();
 
-
-        if(!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        }
-
         if($this->getUser() !== $user) {
-            return $this->redirectToRoute('app_home'); 
+            throw $this->createAccessDeniedException('Accès refusé.');
         }
 
         $form = $this->createForm(UserType::class, $user);
-
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
@@ -65,6 +60,10 @@ class UserController extends AbstractController
         HoursRepository $hoursRepository): Response 
     {
         $hours = $hoursRepository->findAll();
+
+        if($this->getUser() !== $user) {
+            throw $this->createAccessDeniedException('Accès refusé.');
+        }
 
         $form = $this->createForm(ChangePasswordFormType::class);
         $form->handleRequest($request);
