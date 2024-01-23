@@ -18,8 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(HoursRepository $hoursRepository, ServicesRepository $servicesRepository, 
-                        Request $request, EntityManagerInterface $entityManagerInterface, Security $security, 
+    public function index(HoursRepository $hoursRepository, 
+                        ServicesRepository $servicesRepository, 
+                        Request $request, 
+                        EntityManagerInterface $entityManagerInterface, 
+                        Security $security, 
                         ReviewsRepository $reviewsRepository): Response
     {
         $hours = $hoursRepository->findAll();
@@ -60,7 +63,8 @@ class PageController extends AbstractController
     }
 
     #[Route('/services', name: 'app_services')]
-    public function services(HoursRepository $hoursRepository, ServicesRepository $servicesRepository): Response
+    public function services(HoursRepository $hoursRepository, 
+                            ServicesRepository $servicesRepository): Response
     {
         $hours = $hoursRepository->findAll();
         $services = $servicesRepository->findAll();

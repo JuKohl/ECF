@@ -37,7 +37,9 @@ class CarsController extends AbstractController
         ]);
     }
 
-    public function propertySearchType(Request $request, CarsRepository $carsRepository, PaginatorInterface $paginator): Response
+    public function propertySearchType(Request $request, 
+                                    CarsRepository $carsRepository, 
+                                    PaginatorInterface $paginator): Response
     {
         $filterData = new PropertySearch();
 
@@ -72,7 +74,8 @@ class CarsController extends AbstractController
     }
 
     #[Route('/cars/{id}', name: 'app_cars_show')]
-    public function show(HoursRepository $hoursRepository, Cars $car): Response 
+    public function show(HoursRepository $hoursRepository, 
+                        Cars $car): Response 
     {
         $hours = $hoursRepository->findAll();
 

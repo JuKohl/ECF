@@ -11,7 +11,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/connexion', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils, HoursRepository $hoursRepository): Response
+    public function login(AuthenticationUtils $authenticationUtils, 
+                        HoursRepository $hoursRepository): Response
     {
         $hours = $hoursRepository->findAll();
         // if ($this->getUser()) {
