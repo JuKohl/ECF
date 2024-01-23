@@ -6,34 +6,42 @@
       </a>
     </div>
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="{{ path('app_home') }}" class="nav-link px-2">Accueil</a></li>
-      <li><a href="{{ path('app_services') }}" class="nav-link px-2">Services</a></li>
-      <li><a href="{{ path('app_cars') }}" class="nav-link px-2">Ventes</a></li>
-      <li><a href="#" class="nav-link px-2">Contact</a></li>
+      <li>
+        <a href="{{ path('app_home') }}" class="nav-link px-2">Accueil</a>
+      </li>
+      <li>
+        <a href="{{ path('app_services') }}" class="nav-link px-2">Services</a>
+      </li>
+      <li>
+        <a href="{{ path('app_cars') }}" class="nav-link px-2">Ventes</a>
+      </li>
+      <li>
+        <a href="#" class="nav-link px-2">Contact</a>
+      </li>
     </ul>
     <div class="col-md-3 text-end">
     {% if app.user %}
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Mon compte : {{ app.user.firstName }} {{ app.user.name }}
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a class="dropdown-item" href="{{ path('app_user.edit', {'id': app.user.id }) }}">Modifier mes informations</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="{{ path('app_user.edit_password', {'id': app.user.id }) }}">Modifier mon mot de passe</a>
-        </li>
-        <li><hr class="dropdown-divider"></li>
-        <li>
-          <a class="dropdown-item btn-exit" href="{{ path('app_logout') }}">Déconnexion</a>
-        </li>
-      </ul>
-    </div>
-    {% else %}
-      <a href="{{ path('app_register') }}" class="btn btn-outline-primary">M'inscrire</a>
-      <a href="{{ path('app_login') }}" class="btn btn-primary me-2">Connexion</a>
-    </div>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Mon compte : {{ app.user.firstName }} {{ app.user.name }}
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="{{ path('app_user.edit', {'id': app.user.id }) }}">Modifier mes informations</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{ path('app_user.edit_password', {'id': app.user.id }) }}">Modifier mon mot de passe</a>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item btn-exit" href="{{ path('app_logout') }}">Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+      {% else %}
+        <a href="{{ path('app_register') }}" class="btn btn-outline-primary">M'inscrire</a>
+        <a href="{{ path('app_login') }}" class="btn btn-primary me-2">Connexion</a>
+      </div>
     {% endif %}
   </header>
 </div> 
