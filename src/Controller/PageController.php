@@ -49,7 +49,7 @@ class PageController extends AbstractController
             }
         }                
         
-        return $this->render('page/index.html.twig', [
+        return $this->render('pages/index.html.twig', [
             'websiteName' => $websiteName,
             'hours' => $hours,
             'services' => $services,
@@ -65,7 +65,7 @@ class PageController extends AbstractController
         $hours = $hoursRepository->findAll();
         $services = $servicesRepository->findAll();
 
-        return $this->render('page/services.html.twig', [
+        return $this->render('pages/services.html.twig', [
             'hours' => $hours,
             'services' => $services,
         ]);

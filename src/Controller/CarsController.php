@@ -31,7 +31,7 @@ class CarsController extends AbstractController
             3
         );
 
-        return $this->render('page/cars/cars.html.twig',[ 
+        return $this->render('pages/cars/cars.html.twig',[ 
             'cars' => $cars,
             'hours' => $hours,
         ]);
@@ -61,7 +61,7 @@ class CarsController extends AbstractController
             //     3
             // );
     
-            return $this->render('page/cars/cars.html.twig', [
+            return $this->render('pages/cars/cars.html.twig', [
                 'form' => $form->createView(),
                 'filteredForm'=> $filteredForm->createView(),
             ]);
@@ -76,7 +76,7 @@ class CarsController extends AbstractController
     {
         $hours = $hoursRepository->findAll();
 
-        return $this->render('page/cars/show.html.twig', [
+        return $this->render('pages/cars/show.html.twig', [
             'car' => $car,
             'hours' => $hours,
         ]);
