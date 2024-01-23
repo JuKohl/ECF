@@ -17,12 +17,13 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/inscription', name: 'app_register')]
-    public function register(Request $request, 
-                            UserPasswordHasherInterface $userPasswordHasher, 
-                            UserAuthenticatorInterface $userAuthenticator, 
-                            AppCustomAuthenticator $authenticator, 
-                            EntityManagerInterface $entityManager, 
-                            HoursRepository $hoursRepository): Response
+    public function register(
+        Request $request, 
+        UserPasswordHasherInterface $userPasswordHasher, 
+        UserAuthenticatorInterface $userAuthenticator, 
+        AppCustomAuthenticator $authenticator, 
+        EntityManagerInterface $entityManager, 
+        HoursRepository $hoursRepository): Response
     {
         $hours = $hoursRepository->findAll();
 

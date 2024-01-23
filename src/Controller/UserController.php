@@ -16,11 +16,12 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
-    #[Route('/utilisateur/edition/{id}', name: 'user.edit')]
-    public function edit(User $user, 
-                        Request $request, 
-                        EntityManagerInterface $entityManager, 
-                        HoursRepository $hoursRepository): Response
+    #[Route('/utilisateur/edition/{id}', name: 'app_user.edit')]
+    public function edit(
+        User $user, 
+        Request $request, 
+        EntityManagerInterface $entityManager, 
+        HoursRepository $hoursRepository): Response
     {
         $hours = $hoursRepository->findAll();
 
@@ -41,21 +42,27 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             
-            return $this->redirectToRoute('app_home');
+            $this->addFlash(
+                'success',
+                'Les informations de votre compte ont bien été modifiées.'
+        );
+            
+            //return $this->redirectToRoute('app_home');
         }
-
+        
         return $this->render('user/edit.html.twig', [
             'form' => $form->createView(),
             'hours' => $hours,
         ]);
     }
 
-    #[Route('/utilisateur/changement-mot-de-passe/{id}', name:'user.edit.password')]
-    public function editPassword(User $user,
-                                Request $request,
-                                EntityManagerInterface $manager,
-                                UserPasswordHasherInterface $userPasswordHasher,
-                                HoursRepository $hoursRepository): Response 
+    #[Route('/utilisateur/changement-mot-de-passe/{id}', name:'app_user.edit_password')]
+    public function editPassword(
+        User $user,
+        Request $request,
+        EntityManagerInterface $manager,
+        UserPasswordHasherInterface $userPasswordHasher,
+        HoursRepository $hoursRepository): Response 
     {
         $hours = $hoursRepository->findAll();
 
@@ -70,21 +77,15 @@ class UserController extends AbstractController
                 )
                 );
     
-                $this->addFlash(
-                    'success',
-                    'Le mot de passe a été modifié.'
-                );
-
                 $manager->persist($user);
                 $manager->flush();
 
-                return $this->redirectToRoute('app_home');
-                
-            } else {
                 $this->addFlash(
-                    'warning',
-                    'Le mot de passe renseigné est incorrect.'
-                );
+                    'success',
+                    'Le mot de passe a été modifié.'
+                );    
+
+                //return $this->redirectToRoute('app_home');
             }
 
         return $this->render('user/edit_password.html.twig', [

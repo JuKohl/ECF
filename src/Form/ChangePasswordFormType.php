@@ -52,7 +52,7 @@ class ChangePasswordFormType extends AbstractType
                         'class' => 'form-control'
                     ],    
                 ],
-                'invalid_message' => 'Les mots de passe doivent être.',
+                'invalid_message' => 'Les mots de passe doivent être identiques.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
