@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="container">
+        {% block body %} 
+        <h1>Demande de contact {{ contact.name }} {{ contact.firstName }}</h1>
+        <p>Email : {{ contact.email }}</p>
+        <p>Objet : {{ contact.subject }}</p>
+        <p>Message :</p>
+        <div>
+          {{ contact.message|raw }}
+        </div>
+        {% endblock body %}
+        </div>
+    </body>
+</html>

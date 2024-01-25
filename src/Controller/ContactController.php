@@ -6,10 +6,12 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\HoursRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
@@ -17,7 +19,8 @@ class ContactController extends AbstractController
     public function index(
         HoursRepository $hoursRepository,
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        MailerInterface $mailer
     ): Response
     {
         $hours = $hoursRepository->findAll();
@@ -36,10 +39,23 @@ class ContactController extends AbstractController
             $contact = $form->getData();
             $entityManager->persist($contact);
             $entityManager->flush();
+
+        //email
+        $email = (new TemplatedEmail())
+            ->from($contact->getEmail())
+            ->to('root@root.com')
+            ->subject($contact->getSubject())
+            ->htmlTemplate('emails/contact.html.twig')
+
+            ->context([
+                'contact' => $contact,
+            ]);
+
+        $mailer->send($email);
             
             $this->addFlash(
                 'success',
-                'Votre demande a été envoyé avec succès.'
+                'Votre demande a été envoyée avec succès.'
         );
         }
 

@@ -96,10 +96,6 @@ h1,h2,h3,h5 {
   font-weight: bold;
 }
 
-.btn-exit:hover {
-  background-color: $primary;
-}
-
 header {
   box-shadow: 0px 0px 5px $secondary;
 }
@@ -124,4 +120,10 @@ header {
 .rate > label.filled,
 .rate > label.filled ~ label {
   color: #ffc700;
+}
+
+/*button*/
+
+.btn-exit:hover {
+  background-color: $primary;
 }

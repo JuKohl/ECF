@@ -35,12 +35,12 @@ class UserType extends AbstractType
             ],
             'label' => 'Votre prénom',
             'label_attr' => [
-                'class' => 'form-label'
+                'class' => 'form-label mt-4'
             ],
         ])
         ->add('submit', SubmitType::class, [
             'attr' => [
-                'class' => 'btn btn-primary mt-4'
+                'class' => 'btn btn-primary mt-4 d-grid mx-auto'
             ],
             'label' => 'Valider',
             ]);
