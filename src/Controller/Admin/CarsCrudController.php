@@ -28,7 +28,9 @@ class CarsCrudController extends AbstractCrudController
     {
         return $crud 
         ->setEntityLabelInPlural('Voitures')
-        ->setEntityLabelInSingular('voiture');
+        ->setEntityLabelInSingular('voiture')
+        
+        ->setPaginatorPageSize(10);
     }
 
     public function configureFields(string $pageName): iterable
@@ -46,8 +48,14 @@ class CarsCrudController extends AbstractCrudController
         yield TextField::new('feature', 'Boite de vitesse');
         yield TextField::new('equipement', 'Equipements');
         yield TextField::new('moreOption', 'Options');
-        yield TextareaField::new('imageFile', 'Image')->setFormType(VichImageType::class)->hideOnIndex();
-        yield ImageField::new('imageName', 'Image')->setBasePath($carsImagePath)->hideOnForm();
-        yield AssociationField::new('user', 'Utilisateur')->hideOnIndex();
+        yield TextareaField::new('imageFile', 'Image')
+            ->setFormType(VichImageType::class)
+            ->hideOnIndex();
+        yield ImageField::new('imageName', 'Image')
+            ->setBasePath($carsImagePath)
+            ->hideOnForm();
+        yield AssociationField::new('user', 'Utilisateur')
+            ->hideOnForm()
+            ->hideOnIndex();
     }
 }

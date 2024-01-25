@@ -8,10 +8,11 @@
         {% block body %} 
         <h1>Demande de contact {{ contact.name }} {{ contact.firstName }}</h1>
         <p>Email : {{ contact.email }}</p>
+        <p>Numéro de téléphone : {{ contact.phoneNumber }}</p>
         <p>Objet : {{ contact.subject }}</p>
         <p>Message :</p>
         <div>
-          {{ contact.message|raw }}
+            {{ contact.message|raw }}
         </div>
         {% endblock body %}
         </div>

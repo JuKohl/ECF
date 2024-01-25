@@ -7,7 +7,6 @@
 {% block body %}
     <div class="container">
         <h1 class="mt-4">Modification de l'utilisateur</h1>
-        {# read and display several types of flash messages #}
         {% for label, messages in app.flashes(['success', 'warning']) %}
             {% for message in messages %}
                 <div class="alert alert-{{ label }}" role="alert">

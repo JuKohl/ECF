@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class ContactType extends AbstractType
 {
@@ -55,6 +56,18 @@ class ContactType extends AbstractType
                     new Assert\NotBlank(),
                     new Assert\Email(),
                     new Assert\Length(['min' => 2, 'max' => 180])
+                ]
+            ])
+            ->add('phoneNumber', NumberType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'Numéro de téléphone',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4'
+                ],
+                'constraints' => [
+                    new Assert\NotBlank(),
                 ]
             ])
             ->add('subject', TextType::class, [

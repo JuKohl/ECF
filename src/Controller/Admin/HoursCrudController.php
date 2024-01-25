@@ -28,6 +28,8 @@ class HoursCrudController extends AbstractCrudController
     {
         yield TextField::new('day', 'Jour');
         yield TextField::new('hour', 'Horaires');
-        yield AssociationField::new('user', 'Utilisateur')->hideOnIndex();
+        yield AssociationField::new('user', 'Utilisateur')
+            ->hideOnForm()
+            ->hideOnIndex();
     }
 }

@@ -23,7 +23,9 @@ class ReviewsCrudController extends AbstractCrudController
     {
         return $crud 
         ->setEntityLabelInPlural('Avis')
-        ->setEntityLabelInSingular('avis');
+        ->setEntityLabelInSingular('avis')
+        
+        ->setPaginatorPageSize(10);
     }
 
     public function configureFields(string $pageName): iterable
@@ -32,15 +34,19 @@ class ReviewsCrudController extends AbstractCrudController
         yield TextField::new('review', 'Avis');
         yield BooleanField::new('approved', 'Approuvée');
         //yield TextField::new('name', 'Identité');
-        yield ChoiceField::new('rate', 'Notes')->setChoices([
+        yield ChoiceField::new('rate', 'Notes')
+            ->setChoices([
             '1' => '1',
             '2' => '2',
             '3' => '3',
             '4' => '4',
             '5' => '5',
-        ])->renderExpanded()            
-        ->setFormTypeOption('disabled', 'disabled');
-        yield AssociationField::new('user', 'Utilisateur')->hideOnIndex();
+        ])
+            ->renderExpanded()            
+            ->setFormTypeOption('disabled', 'disabled');
+        yield AssociationField::new('user', 'Utilisateur')
+            ->hideOnForm()
+            ->hideOnIndex();
     }
     
 }

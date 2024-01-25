@@ -25,7 +25,9 @@ class ServicesCrudController extends AbstractCrudController
     {
         return $crud 
         ->setEntityLabelInPlural('Services')
-        ->setEntityLabelInSingular('service');
+        ->setEntityLabelInSingular('service')
+        
+        ->setPaginatorPageSize(10);
     }
 
     public function configureFields(string $pageName): iterable
@@ -38,6 +40,6 @@ class ServicesCrudController extends AbstractCrudController
         yield TextareaField::new('description', 'Description');
         yield TextareaField::new('imageFile', 'Image')->setFormType(VichImageType::class)->hideOnIndex();
         yield ImageField::new('imageName', 'Image')->setBasePath($servicesImagePath)->hideOnForm();
-        yield AssociationField::new('user', 'Utilisateur')->hideOnIndex();
+        yield AssociationField::new('user', 'Utilisateur')->hideOnForm()->hideOnIndex();
     }
 }

@@ -27,7 +27,9 @@ class UserCrudController extends AbstractCrudController
     {
         return $crud 
         ->setEntityLabelInPlural('Utilisateurs')
-        ->setEntityLabelInSingular('utilisateur');
+        ->setEntityLabelInSingular('utilisateur')
+
+        ->setPaginatorPageSize(10);
     }
 
     public function configureActions(Actions $actions): Actions
@@ -42,17 +44,19 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         $fields = [
-            IdField::new('id')->hideOnForm()->hideOnIndex(),
+            IdField::new('id')
+                ->hideOnForm()
+                ->hideOnIndex(),
             EmailField::new('email')
-            ->setFormTypeOption('disabled', 'disabled'),
+                ->setFormTypeOption('disabled', 'disabled'),
             TextField::new('firstName', 'Prénom')
-            ->setFormTypeOption('disabled', 'disabled'),
+                ->setFormTypeOption('disabled', 'disabled'),
             TextField::new('name', 'Nom')
-            ->setFormTypeOption('disabled', 'disabled'),
+                ->setFormTypeOption('disabled', 'disabled'),
             ChoiceField::new('roles')
-            ->setChoices(['ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_EMPLOYEE' => 'ROLE_EMPLOYEE', 'ROLE_USER' => 'ROLE_USER'])
-            ->allowMultipleChoices()
-            ->renderExpanded(),
+                ->setChoices(['ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_EMPLOYEE' => 'ROLE_EMPLOYEE', 'ROLE_USER' => 'ROLE_USER'])
+                ->allowMultipleChoices()
+                ->renderExpanded(),
             DateTimeField::new('createdAt')
                 ->hideOnForm()
         ];
