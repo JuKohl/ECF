@@ -48,7 +48,7 @@ class ContactCrudController extends AbstractCrudController
             TextareaField::new('message', 'Message')
                 ->setFormTypeOption('disabled', 'disabled')
                 ->hideOnIndex(),
-            DateTimeField::new('createdAt')
+            DateTimeField::new('createdAt', 'Date de la demande')
                 ->hideOnForm(),
         ];
     }

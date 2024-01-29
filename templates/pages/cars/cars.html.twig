@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Garage V. Parrot - Ventes
+  Garage V. Parrot - Voitures
 {% endblock %}
 
 {% block body %}
   <div class="container mt-4">
     <div class="row justify-content-center">
       <div class="col-md-3">
-        <form class="form-inline filter-form mx-auto">
+        <form class="form-inline filter-form mx-auto" name"filterMileage">
           <div class="form-group">
             <label for="minMileage" class="mr-2">Kilométrage min:</label>
             <input type="text" name="minMileage" id="minMileage" class="form-control" placeholder="Min">
@@ -20,7 +20,7 @@
         </form>
       </div>
       <div class="col-md-3">
-        <form class="form-inline filter-form mx-auto">
+        <form class="form-inline filter-form mx-auto" name"filterReleaseYeae">
           <div class="form-group">
             <label for="minReleaseYear" class="mr-2">Année min:</label>
             <input type="text" name="minReleaseYear" id="minReleaseYear" class="form-control" placeholder="Min">
@@ -32,7 +32,7 @@
         </form>
       </div>
       <div class="col-md-3">
-        <form class="form-inline filter-form mx-auto">
+        <form class="form-inline filter-form mx-auto" name"filterPrice">
           <div class="form-group">
             <label for="minPrice" class="mr-2">Prix min:</label>
             <input type="text" name="minPrice" id="minPrice" class="form-control" placeholder="Min">

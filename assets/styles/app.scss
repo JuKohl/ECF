@@ -59,12 +59,18 @@ $ligth: #F2F2F2;
 
 body {
   font-family: 'Barlow', sans-serif;
+  line-height: 1.6;
 }
 
 .homePage {
   background: url('../images/home.jpg') no-repeat center center;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.letter-space {
+  letter-spacing: 0.05em;
+  line-height: 2em;
 }
 
 .custom-h1,
@@ -87,11 +93,17 @@ body {
 }
 
 /* header */
-.nav,
+.navbar,
 h1,h2,h3,h5 {
   font-family: 'Rajdhani', sans-serif;
 }
+
+.nav-link {
+  color: $primary;
+}
+
 .nav-link:hover {
+  color: $primary;
   text-decoration: underline;
   font-weight: bold;
 }
