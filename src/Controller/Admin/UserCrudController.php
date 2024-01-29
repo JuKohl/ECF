@@ -47,32 +47,28 @@ class UserCrudController extends AbstractCrudController
             IdField::new('id')
                 ->hideOnForm()
                 ->hideOnIndex(),
-            EmailField::new('email')
-                ->setFormTypeOption('disabled', 'disabled'),
-            TextField::new('firstName', 'Prénom')
-                ->setFormTypeOption('disabled', 'disabled'),
-            TextField::new('name', 'Nom')
-                ->setFormTypeOption('disabled', 'disabled'),
+            EmailField::new('email'),
+            TextField::new('firstName', 'Prénom'),
+            TextField::new('name', 'Nom'),
             ChoiceField::new('roles')
                 ->setChoices(['ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_EMPLOYEE' => 'ROLE_EMPLOYEE', 'ROLE_USER' => 'ROLE_USER'])
                 ->allowMultipleChoices()
                 ->renderExpanded(),
             DateTimeField::new('createdAt')
-                ->hideOnForm()
+                ->hideOnForm(),
         ];
 
-        // $password = TextField::new('password')
-        //     ->setFormType(RepeatedType::class)
-        //     ->setFormTypeOptions([
-        //         'type' => PasswordType::class,
-        //         'first_options' => ['label' => 'Password'],
-        //         'second_options' => ['label' => '(Repeat)'],
-        //         'mapped' => false,
-        //     ])
-        //     ->setRequired($pageName === Crud::PAGE_NEW)
-        //     ->onlyOnForms()
-        //     ;
-        // $fields[] = $password;
+        $password = TextField::new('password')
+            ->setFormType(RepeatedType::class)
+            ->setFormTypeOptions([
+                'type' => PasswordType::class,
+                'first_options' => ['label' => 'Password'],
+                'second_options' => ['label' => '(Repeat)'],
+                'mapped' => false,
+            ])
+            ->setRequired($pageName === Crud::PAGE_NEW)
+            ->onlyOnForms();
+        $fields[] = $password;
 
         return $fields;
     }
