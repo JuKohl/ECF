@@ -8,9 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class HoursCrudController extends AbstractCrudController
@@ -46,8 +43,15 @@ class HoursCrudController extends AbstractCrudController
 
         yield TextField::new('day', 'Jour');
         yield TextField::new('hour', 'Horaires');
-        yield ChoiceField::new('user', 'Utilisateur')
-            ->hideOnIndex()
-            ->setChoices($userChoices);
+        yield AssociationField::new('user', 'Utilisateur')
+            ->formatValue(function ($value, $entity){
+                return $entity->getUser()->getFirstName() . ' ' . $entity->getUser()->getName();
+            })
+            ->setFormTypeOptions([
+                'choices' => $userChoices,
+                'choice_label' => function ($user) {
+                    return $user->getFirstName() . ' ' . $user->getName();
+                }
+            ]);
     }
 }
