@@ -3,22 +3,26 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cars;
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Validator\Constraints\Date;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CarsCrudController extends AbstractCrudController
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Cars::class;
@@ -38,6 +42,14 @@ class CarsCrudController extends AbstractCrudController
         $mappingsParams = $this->getParameter('vich_uploader.mappings');
         $carsImagePath =  $mappingsParams['cars']['uri_prefix'];
 
+        $userRepository = $this->entityManager->getRepository(User::class);
+        $users = $userRepository->findAll();
+        $userChoices = [];
+        foreach ($users as $user) {
+            $fullName = $user->getFirstName() . ' ' . $user->getName();
+            $userChoices[$fullName] = $user;
+        }
+
         yield TextField::new('brand', 'Marque');
         yield TextField::new('model', 'Modèle');
         yield IntegerField::new('price', 'Prix');
@@ -55,7 +67,14 @@ class CarsCrudController extends AbstractCrudController
             ->setBasePath($carsImagePath)
             ->hideOnForm();
         yield AssociationField::new('user', 'Utilisateur')
-            ->hideOnForm()
-            ->hideOnIndex();
+            ->formatValue(function ($value, $entity){
+                return $entity->getUser()->getFirstName() . ' ' . $entity->getUser()->getName();
+            })
+            ->setFormTypeOptions([
+                'choices' => $userChoices,
+                'choice_label' => function ($user) {
+                    return $user->getFirstName() . ' ' . $user->getName();
+                }
+            ]);
     }
 }
