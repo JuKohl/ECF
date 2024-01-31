@@ -5,5 +5,8 @@
 {% endblock %}
 
 {% block main %}
-  <h2>Bienvenue sur l'administration du garage V. Parrot !</h2>
+  <h1>Bienvenue sur l'administration du garage V. Parrot !</h1>
+  {% if app.user %}
+    <div> Bonjour {{ app.user.firstName}} {{ app.user.name}}</div>
+  {% endif %}
 {% endblock %}
