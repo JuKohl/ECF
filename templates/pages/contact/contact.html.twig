@@ -15,7 +15,11 @@
             {% endfor %}
         {% endfor %}
         <div class="col-md-8 mx-auto">
-            {{ form(form) }}
+            {{ form_start(form) }}
+                {% if contactSubject is defined %}
+                    {{ form_row(form.subject, {'value': contactSubject}) }}
+                {% endif %}
+            {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}

@@ -46,8 +46,7 @@ class ReviewsCrudController extends AbstractCrudController
             $userChoices[$fullName] = $user;
         }
         // yield from parent::configureFields($pageName);
-        yield TextField::new('review', 'Avis')
-            ->setFormTypeOption('disabled', 'disabled');
+        yield TextField::new('review', 'Avis');
         yield BooleanField::new('approved', 'Approuvée');
         yield ChoiceField::new('rate', 'Notes')
             ->setChoices([
@@ -57,8 +56,7 @@ class ReviewsCrudController extends AbstractCrudController
             '4' => '4',
             '5' => '5',
         ])
-            ->renderExpanded()            
-            ->setFormTypeOption('disabled', 'disabled');
+            ->renderExpanded();            
         yield DateTimeField::new('createdAt', 'Date de l\'avis')
             ->setFormTypeOption('disabled', 'disabled');
         yield AssociationField::new('user', 'Utilisateur')
@@ -70,8 +68,7 @@ class ReviewsCrudController extends AbstractCrudController
                 'choice_label' => function ($user) {
                     return $user->getFirstName() . ' ' . $user->getName();
                 }
-            ])
-            ->setFormTypeOption('disabled', 'disabled');
+            ]);
     }
     
 }

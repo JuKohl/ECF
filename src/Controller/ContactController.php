@@ -27,6 +27,8 @@ class ContactController extends AbstractController
 
         $contact = new Contact();
 
+        $subject = $request->query->get('subject');
+
         if($this->getUser()) {
             $contact->setName($this->getUser()->getName())
                 ->setFirstName($this->getUser()->getFirstName())
@@ -61,6 +63,7 @@ class ContactController extends AbstractController
 
         return $this->render('pages/contact/contact.html.twig', [
             'form' => $form->createView(),
+            'contactSubject' => $subject,
             'hours' => $hours,
         ]);
     }
