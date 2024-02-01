@@ -43,20 +43,20 @@
         {% endfor %}
         </div>
         <p>Vous souhaitez plus de renseignements sur les services proposés par le garage. Rendez-vous sur la page
-        <a href="{{ path('app_services') }}">services</a>
+            <a href="{{ path('app_services') }}">services</a>
         </p>
     </div>
     <div class="row">
-        <h2>Avis sur le garage</h2>
+        <h2 class="pb-2 border-bottom">Avis sur le garage</h2>
         {% if user %}
             {% include "partials/_formReview.html.twig"%}
         {% else %}
-            <p>Vous devez être connecté pour pouvoir donner une note. Rendez-vous sur la page
+            <p class="m-4">Vous devez être connecté pour pouvoir donner une note. Rendez-vous sur la page
                 <a href="{{ path('app_login') }}">connexion</a>
             </p>
         {% endif %}
     </div>
-    <div class="carousel-section row mt-4">
+    <div class="carousel-section row my-5">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {% for key, r in reviews %}
