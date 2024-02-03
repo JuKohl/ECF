@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CarsRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -62,6 +64,14 @@ class Cars
 
     #[ORM\Column(length: 255)]
     private ?string $model = null;
+
+    #[ORM\OneToMany(mappedBy: 'cars', targetEntity: CarsImages::class, cascade: ['persist'])]
+    private Collection $carsImages;
+
+    public function __construct()
+    {
+        $this->carsImages = new ArrayCollection();
+    }
 
     // #[ORM\Column(nullable: true)]
     // private ?\DateTimeImmutable $updatedAt = null;  
@@ -244,6 +254,36 @@ class Cars
     public function setModel(string $model): static
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CarsImages>
+     */
+    public function getCarsImages(): Collection
+    {
+        return $this->carsImages;
+    }
+
+    public function addCarsImage(CarsImages $carsImage): static
+    {
+        if (!$this->carsImages->contains($carsImage)) {
+            $this->carsImages->add($carsImage);
+            $carsImage->setCars($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarsImage(CarsImages $carsImage): static
+    {
+        if ($this->carsImages->removeElement($carsImage)) {
+            // set the owning side to null (unless already changed)
+            if ($carsImage->getCars() === $this) {
+                $carsImage->setCars(null);
+            }
+        }
 
         return $this;
     }

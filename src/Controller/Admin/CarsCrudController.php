@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Cars;
 use App\Entity\User;
+use App\Form\CarsImagesType;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -13,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 
 class CarsCrudController extends AbstractCrudController
 {
@@ -66,6 +68,8 @@ class CarsCrudController extends AbstractCrudController
         yield ImageField::new('imageName', 'Image')
             ->setBasePath($carsImagePath)
             ->hideOnForm();
+        yield CollectionField::new('CarsImages', 'Images supplémentaires')
+            ->setEntryType(CarsImagesType::class);
         yield AssociationField::new('user', 'Utilisateur')
             ->formatValue(function ($value, $entity){
                 return $entity->getUser()->getFirstName() . ' ' . $entity->getUser()->getName();

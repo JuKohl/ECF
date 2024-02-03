@@ -5,9 +5,18 @@
 {% endblock %}
 
 {% block body %}
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <ul class="navbar-nav mx-auto">
+            {% for service in services %}
+                <li class="navBarServicesLink nav-item"><a href="#{{ service.type }}" class="nav-link">{{ service.type }}</a></li>
+            {% endfor %}
+            </ul>
+        </nav>
+    </div>
     <div class="container col-xxl-8 px-4 py-5">
         {% for service in services %}
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-4 mb-5">
                 <div class="col-10 col-sm-8 col-lg-6">
                     {% if service.imageName %}
                         <img src="{{ vich_uploader_asset(service, 'imageFile') }}" class="card-img-top" alt="photo de {{ service.type }}">
@@ -15,13 +24,14 @@
                         <img src="{{ asset('build/images/default_image.png') }}" class="card-img-top" alt="photo de">
                     {% endif %}
                 </div>
-                <div class="col-lg-6">
-                    <h5 class="card-title">{{ service.type }}</h5>
-                    <p class="lead">{{ service.description }}</p>
+                <div class="col-lg-6" id="{{ service.type }}">
+                    <h4 class="card-title text-center">{{ service.type }}</h4>
+                    <p class="lead mt-4 customParagraph">{{ service.description }}</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="{{ path('app_contact', {'subject' : 'Demande de renseignements pour le service ' ~ service.type }) }}" class="btn btn-primary btn-lg px-4 me-md-2">Contacter l'atelier</a>
+                        <a href="{{ path('app_contact', {'subject' : 'Demande de renseignements pour le service ' ~ service.type }) }}" class="btn btn-primary btn-lg px-4 me-md-2 mx-auto mt-4">Contacter l'atelier</a>
                     </div>
                 </div>
+                <hr>
             </div>
         {% endfor %}
     </div>

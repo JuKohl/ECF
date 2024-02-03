@@ -83,9 +83,12 @@ class CarsController extends AbstractController
     {
         $hours = $hoursRepository->findAll();
 
+        $carImages = $car->getCarsImages();
+
         return $this->render('pages/cars/show.html.twig', [
             'car' => $car,
             'hours' => $hours,
+            'carImages' => $carImages,
         ]);
     }
 

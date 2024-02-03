@@ -144,7 +144,7 @@ h1,h2,h3,h5,
 .footer-local-owner,
 .footer-hours {
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .icon-fa {
@@ -176,9 +176,26 @@ a[href^="tel"]:hover {
   color: $primary;
 }
 
+//page services
+.navBarServicesLink,
+.navBarServicesLink > a {
+  text-decoration: none;
+  list-style: none;
+}
+
+.customParagraph {
+  text-indent: 1rem;
+  line-height: 1.6;
+}
+
 // page cars
 p.showCarDetails {
   text-align: center;
   background-color: $light;
   color: #D94350;
+}
+
+//page register
+.customCheckbox {
+  margin-left: 1rem;
 }

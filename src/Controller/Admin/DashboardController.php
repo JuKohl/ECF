@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cars;
+use App\Entity\CarsImages;
 use App\Entity\User;
 use App\Entity\Hours;
 use App\Entity\Contact;
@@ -35,6 +36,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Horaires', 'fa-regular fa-clock', Hours::class);
         yield MenuItem::linkToCrud('Services', 'fas fa-wrench', Services::class);
         yield MenuItem::linkToCrud('Voitures', 'fas fa-car-side', Cars::class);
+        //yield MenuItem::linkToCrud('Images des voitures', 'fas fa-image', CarsImages::class);
         yield MenuItem::linkToCrud('Avis', 'fas fa-star', Reviews::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-users', User::class);
         yield MenuItem::linkToCrud('Demandes de contact', 'fa-solid fa-envelope', Contact::class);

@@ -63,6 +63,9 @@ class RegistrationFormType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label mt-4'
                 ],
+                'attr' => [
+                    'class' => 'customCheckbox',
+                ],
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
