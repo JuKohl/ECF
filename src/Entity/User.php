@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reviews::class)]
     private Collection $reviews;
 
-    #[ORM\ManyToMany(mappedBy: 'user', targetEntity: Services::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Services::class)]
     private Collection $services;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Hours::class)]

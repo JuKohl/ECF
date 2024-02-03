@@ -39,7 +39,7 @@ class UserCrudController extends AbstractCrudController
             ->add(Crud::PAGE_EDIT, Action::INDEX)
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->add(Crud::PAGE_EDIT, Action::DETAIL)
-            ;
+        ;
     }
 
     public function configureFields(string $pageName): iterable
