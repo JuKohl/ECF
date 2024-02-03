@@ -3,7 +3,7 @@
     {% if car.imageName %}
       <img src="{{ vich_uploader_asset(car, 'imageFile') }}" class="card-img-top" alt="photo de {{ car.brand }}">
       {% else %}
-        <img src="{{ asset('build/images/default-image.png') }}" class="card-img-top" alt="photo de {{ car.brand }}">
+        <img src="{{ asset('build/images/default_image.png') }}" class="card-img-top" alt="photo de {{ car.brand }}">
     {% endif %}
     <div class="card-body">
       <h5 class="card-title">{{ car.brand }}</h5>
