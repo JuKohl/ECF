@@ -4,6 +4,7 @@
 // customize some Bootstrap variables
 $primary: #D92332;
 $secondary: #262526;
+$info: #D9777F;
 $ligth: #F2F2F2;
 
 // the ~ allows you to reference things in node_modules
@@ -47,8 +48,9 @@ body {
 }
 
 // header
-header {
-  box-shadow: 0px 0px 5px $secondary;
+header,
+.btn-contact {
+  box-shadow: 0px 0px 5px #D9777F;
 }
 
 .navbar,
@@ -140,11 +142,9 @@ h1,h2,h3,h5,
 }
 
 // footer
-
 .footer-local-owner,
 .footer-hours {
   font-weight: bold;
-  font-size: 1.5em;
 }
 
 .icon-fa {
@@ -154,14 +154,19 @@ h1,h2,h3,h5,
 
 .nav-hours {
   list-style: none;
+  font-size: 1rem;
 }
 
 .footer-day {
   font-weight: bold;
 }
 
-.footer-local,
 .footer-hour {
+  font-weight: initial;
+  margin-left: 1em;
+}
+
+.footer-local {
   margin-left: 3em;
 }
 
@@ -176,7 +181,7 @@ a[href^="tel"]:hover {
   color: $primary;
 }
 
-//page services
+// page services
 .navBarServicesLink,
 .navBarServicesLink > a {
   text-decoration: none;
