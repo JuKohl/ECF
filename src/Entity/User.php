@@ -39,7 +39,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(min: 2, max: 50)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reviews::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reviews::class, cascade: ["remove"])]
     private Collection $reviews;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Services::class)]
