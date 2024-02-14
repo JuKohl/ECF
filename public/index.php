@@ -10,6 +10,8 @@ $kernel = function (array $context) {
 // echo 'ok ça marche'.$context['APP_ENV'].$context['APP_DEBUG'];
 };
 
+$kernelInstance = $kernel($_SERVER);
+
 function configureTrustedProxies() {
   $trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ?? false;
   $trustedProxies = $trustedProxies ? explode(',', $trustedProxies) : [];
