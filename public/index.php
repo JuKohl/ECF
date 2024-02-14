@@ -11,23 +11,23 @@ $kernel = function (array $context) {
 // echo 'ok ça marche'.$context['APP_ENV'].$context['APP_DEBUG'];
 };
 
-$kernelInstance = $kernel($_SERVER);
+// $kernelInstance = $kernel($_SERVER);
 
-function configureTrustedProxies() {
-  $trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ?? false;
-  $trustedProxies = $trustedProxies ? explode(',', $trustedProxies) : [];
-  if($_SERVER['APP_ENV'] == 'prod') $trustedProxies[] = $_SERVER['REMOTE_ADDR'];
-  if($trustedProxies) {
-      Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_AWS_ELB);
-  }
-}
+// function configureTrustedProxies() {
+//   $trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ?? false;
+//   $trustedProxies = $trustedProxies ? explode(',', $trustedProxies) : [];
+//   if($_SERVER['APP_ENV'] == 'prod') $trustedProxies[] = $_SERVER['REMOTE_ADDR'];
+//   if($trustedProxies) {
+//       Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_AWS_ELB);
+//   }
+// }
 
-configureTrustedProxies();
+// configureTrustedProxies();
 
-$request = Request::createFromGlobals();
+// $request = Request::createFromGlobals();
 
-$response = $kernelInstance->handle($request);
+// $response = $kernelInstance->handle($request);
 
-$response->send();
+// $response->send();
 
-$kernelInstance->terminate($request, $response);
+// $kernelInstance->terminate($request, $response);
