@@ -2,6 +2,7 @@
 
 use App\Kernel;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
@@ -22,3 +23,11 @@ function configureTrustedProxies() {
 }
 
 configureTrustedProxies();
+
+$request = Request::createFromGlobals();
+
+$response = $kernelInstance->handle($request);
+
+$response->send();
+
+$kernelInstance->terminate($request, $response);
