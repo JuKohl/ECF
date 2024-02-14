@@ -3,16 +3,18 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cars;
-use App\Entity\CarsImages;
 use App\Entity\User;
 use App\Entity\Hours;
 use App\Entity\Contact;
 use App\Entity\Reviews;
 use App\Entity\Services;
+use App\Entity\CarsImages;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use Symfony\Component\Security\Core\User\UserInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
@@ -40,5 +42,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Avis', 'fas fa-star', Reviews::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-users', User::class);
         yield MenuItem::linkToCrud('Demandes de contact', 'fa-solid fa-envelope', Contact::class);
+    }
+
+    public function configureUserMenu(UserInterface $user): UserMenu
+    {
+        return parent::configureUserMenu($user)
+            // use the given $user object to get the user name
+            ->setName($user->getFirstName() . ' ' . $user->getName());
     }
 }
