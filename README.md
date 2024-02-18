@@ -33,6 +33,7 @@ On peut contacter le garage via notre messagerie mail en cliquant sur l'adresse 
 On peut aussi téléphoner au garage en cliquant sur le numéro de téléphone (c'est un faux numéro).
 - Administration :
 Un utilisateur par défaut a été créé pour des tests avant de créer celui du futur adminstarteur du site.
+=> Toutes les images sont des photos en libre droit.
 
 ## Utilisation
 
@@ -81,3 +82,10 @@ C'est un problème qui n'est pas en local donc il faudra faire des recherches.
 
 J'ai été le seul à travailler sur ce projet.
 Je remercie quand même ceux qui m'ont aidé d'une manière ou d'une autre (surtout d'une manière indirecte lors de mes recherches sur internet) lorsque j'ai rencontré des difficultés et pour stimuler ma réflexion.
+
+## Application
+En production :
+https://ecf-garagevincentparrot-6c1e90f5b649.herokuapp.com/
+
+En local :
+Lancer le serveur local de Symfony dans le terminal de l'IDE et lancer le serveur pour avoir accès à la BDD et à PhpMyAdmin avec l'application installée sur sa machine.
