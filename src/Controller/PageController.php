@@ -76,5 +76,19 @@ class PageController extends AbstractController
             'services' => $services,
         ]);
     }
+    
+    #[Route('/legal', name: 'app_legal')]
+    public function legal(
+        HoursRepository $hoursRepository, 
+        ServicesRepository $servicesRepository): Response
+    {
+        $hours = $hoursRepository->findAll();
+        $services = $servicesRepository->findAll();
+
+        return $this->render('pages/legal.html.twig', [
+            'hours' => $hours,
+            'services' => $services,
+        ]);
+    }
 
 }
