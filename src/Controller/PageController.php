@@ -90,5 +90,18 @@ class PageController extends AbstractController
             'services' => $services,
         ]);
     }
+    #[Route('/rgpd', name: 'app_rgpd')]
+    public function rgpd(
+        HoursRepository $hoursRepository, 
+        ServicesRepository $servicesRepository): Response
+    {
+        $hours = $hoursRepository->findAll();
+        $services = $servicesRepository->findAll();
+
+        return $this->render('pages/rgpd.html.twig', [
+            'hours' => $hours,
+            'services' => $services,
+        ]);
+    }
 
 }

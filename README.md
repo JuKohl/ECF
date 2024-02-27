@@ -71,11 +71,9 @@ Même si le projet est fonctionnel, des améliorations sont prévues.
 Etant un projet d'évaluation et ayant une échéance à respecter, je n'ai pas réussi à terminer tout ce que je voulais mettre en place.
 - La première amélioration prévue est la mise en place des filtres pour des véhicules (peut-être en utilisant React).
 Pour le moment, ils apparaissent mais ils ne fonctionnent pas et l'aspect ne me plait pas.
-- La deuxième amélioration prévue est la rédaction des pages "Mentions légales" et "RGPD".
-Ce n'était pas ma priorité dans ce projet étant donné que c'est pour un garage qui n'existe pas.
-- La troisième amélioration prévue est la correction du Recaptcha sur le formulaire de contact.
+- La deuxième amélioration prévue est la correction du Recaptcha sur le formulaire de contact.
 C'est un problème qui n'est pas en local donc il faudra faire des recherches.
-- La quatrième amélioration prévue est la possibilité de faire un reset du mot de passe.
+- La troisième amélioration prévue est la possibilité de faire un reset du mot de passe.
 
 ## Auteur
 
