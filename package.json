@@ -26,5 +26,8 @@
     "engines": {
         "node": "v21.1.*",
         "npm": "10.3.*"
+    },
+    "dependencies": {
+        "nouislider": "^15.7.1"
     }
 }

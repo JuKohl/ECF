@@ -8,9 +8,9 @@ car_index:
     path: /cars
     controller: App\Controller\CarsController::index
 
-car_propertySearchType:
-    path: /cars
-    controller: App\Controller\CarsController::propertySearchType
+car_filter:
+    path: /cars/filter
+    controller: App\Controller\CarsController::filter
 
 car_select:
     path: /cars/{id}

@@ -6,45 +6,65 @@
 
 {% block body %}
   <div class="container mt-4">
-    <div class="row justify-content-center">
-      <div class="col-md-3">
-        <form class="form-inline filter-form mx-auto" name"filterMileage">
-          <div class="form-group">
-            <label for="minMileage" class="mr-2">Kilométrage min:</label>
-            <input type="text" name="minMileage" id="minMileage" class="form-control" placeholder="Min">
+    <form class="row d-flex justify-content-between mb-4">
+      <div class="form-group col-md-3">
+        <label for="filterMileage" class="form-label">Kilométrage :</label>
+        <div id="mileage-slider" data-min="{{ minMaxValues.minMileage }}" data-max="{{ minMaxValues.maxMileage }}">
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col-auto">
+            <label for="minMileage" class="col-form-label">Min:</label>
           </div>
-          <div class="form-group">
-            <label for="maxMileage" class="mr-2">Kilométrage max:</label>
-            <input type="text" name="maxMileage" id="maxMileage" class="form-control" placeholder="Max">
+          <div class="col">
+            <input type="text" id="minMileage" value="{{ minMaxValues.minMileage }}" readonly class="form-control">
           </div>
-        </form>
+          <div class="col-auto">
+            <label for="maxMileage" class="col-form-label">Max:</label>
+          </div>
+          <div class="col">
+            <input type="text" id="maxMileage" value="{{ minMaxValues.maxMileage }}" readonly class="form-control">
+          </div>
+        </div>
       </div>
-      <div class="col-md-3">
-        <form class="form-inline filter-form mx-auto" name"filterReleaseYeae">
-          <div class="form-group">
-            <label for="minReleaseYear" class="mr-2">Année min:</label>
-            <input type="text" name="minReleaseYear" id="minReleaseYear" class="form-control" placeholder="Min">
+      <div class="form-group col-md-3">
+        <label for="filterYear" class="form-label">Année :</label>
+        <div id="releaseYear-slider" data-min="{{ minMaxValues.minReleaseYear }}" data-max="{{ minMaxValues.maxReleaseYear }}">
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col-auto">
+            <label for="minReleaseYear" class="col-form-label">Min:</label>
           </div>
-          <div class="form-group mr-2">
-            <label for="maxReleaseYear" class="mr-2">Année max:</label>
-            <input type="text" name="maxReleaseYear" id="maxReleaseYear" class="form-control" placeholder="Max">
+          <div class="col">
+            <input type="text" id="minReleaseYear" value="{{ minMaxValues.minReleaseYear }}" readonly class="form-control">
           </div>
-        </form>
+          <div class="col-auto">
+            <label for="maxReleaseYear" class="col-form-label">Max:</label>
+          </div>
+          <div class="col">
+            <input type="text" id="maxReleaseYear" value="{{ minMaxValues.maxReleaseYear }}" readonly class="form-control">
+          </div>
+        </div>
       </div>
-      <div class="col-md-3">
-        <form class="form-inline filter-form mx-auto" name"filterPrice">
-          <div class="form-group">
-            <label for="minPrice" class="mr-2">Prix min:</label>
-            <input type="text" name="minPrice" id="minPrice" class="form-control" placeholder="Min">
+      <div class="form-group col-md-3">
+        <label for="filterPrice" class="form-label">Prix :</label>
+        <div id="price-slider" data-min="{{ minMaxValues.minPrice }}" data-max="{{ minMaxValues.maxPrice }}">
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col-auto">
+            <label for="minPrice" class="col-form-label">Min:</label>
           </div>
-          <div class="form-group mr-2">
-            <label for="maxPrice" class="mr-2">Prix max:</label>
-            <input type="text" name="maxPrice" id="maxPrice" class="form-control" placeholder="Max">
+          <div class="col">
+            <input type="text" id="minPrice" value="{{ minMaxValues.minPrice }}" readonly class="form-control">
           </div>
-          <button type="submit" class="btn btn-primary ml-2">Filtrer</button>
-        </form>
+          <div class="col-auto">
+            <label for="maxPrice" class="col-form-label">Max:</label>
+          </div>
+          <div class="col">
+            <input type="text" id="maxPrice" value="{{ minMaxValues.maxPrice }}" readonly class="form-control">
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 
   {% if not cars.items is same as ([]) %}

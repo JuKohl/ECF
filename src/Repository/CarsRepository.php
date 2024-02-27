@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Cars;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Cars>
@@ -16,47 +18,38 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CarsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $paginator;
+    
+    public function __construct(
+        ManagerRegistry $registry, 
+        PaginatorInterface $paginator)
     {
         parent::__construct($registry, Cars::class);
+        $this->paginator = $paginator;
     }
 
-    public function findByFilters($minMileage, $maxMileage, $minReleaseYear, $maxReleaseYear, $minPrice, $maxPrice)
+    public function findMinMaxMileage(): array
     {
-        $query = $this->createQueryBuilder('c');
-
-        if ($minMileage) 
-        {
-            $query->andWhere('c.mileage >= :minMileage')
-                ->setParameter('minMileage', $minMileage);
-        }
-
-        if ($maxMileage) {
-            $query->andWhere('c.mileage <= :maxMileage')
-                ->setParameter('maxMileage', $maxMileage);
-        }
-
-        if ($minReleaseYear) {
-            $query->andWhere('c.ReleaseYear >= :minReleaseYear')
-                ->setParameter('minReleaseYear', $minReleaseYear);
-        }
-
-        if ($maxReleaseYear) {
-            $query->andWhere('c.ReleaseYear <= :maxReleaseYear')
-                ->setParameter('maxReleaseYear', $maxReleaseYear);
-        }
-
-        if ($minPrice) {
-            $query->andWhere('c.Price >= :minPrice')
-                ->setParameter('minPrice', $minPrice);
-        }
-
-        if ($maxPrice) {
-            $query->andWhere('c.Price <= :maxPrice')
-                ->setParameter('maxPrice', $maxPrice);
-        }
-
-    return $query->getQuery()->getResult();
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('MIN(c.mileage) as minMileage, MAX(c.mileage) as maxMileage');
+    
+        return $qb->getQuery()->getSingleResult();
+    }
+    
+    public function findMinMaxReleaseYear(): array
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('MIN(c.release_year) as minReleaseYear, MAX(c.release_year) as maxReleaseYear');
+    
+        return $qb->getQuery()->getSingleResult();
+    }
+    
+    public function findMinMaxPrice(): array
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('MIN(c.price) as minPrice, MAX(c.price) as maxPrice');
+    
+        return $qb->getQuery()->getSingleResult();
     }
 
 //    /**
