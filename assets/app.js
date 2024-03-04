@@ -8,8 +8,6 @@ import './bootstrap.js';
  */
 import './styles/app.scss'
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉')
-
 // app.js
 
 const $ = require('jquery');
@@ -27,83 +25,95 @@ require('bootstrap/js/dist/tooltip');
 
 import noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
+import Filter from './modules/Filter';
 
+const filter = new Filter(document.querySelector('.js-filter'));
+const actionUrl = document.querySelector('[data-action-url]').getAttribute('data-action-url');
 const sliderMileage = document.getElementById('mileage-slider');
-const minMileageInput = document.getElementById('minMileage');
-const maxMileageInput = document.getElementById('maxMileage');
-
 const sliderReleaseYear = document.getElementById('releaseYear-slider');
-const minReleaseYearInput = document.getElementById('minReleaseYear');
-const maxReleaseYearInput = document.getElementById('maxReleaseYear');
-
 const sliderPrice = document.getElementById('price-slider');
-const minPriceInput = document.getElementById('minPrice');
-const maxPriceInput = document.getElementById('maxPrice');
-
 
 if (sliderMileage){
-  const minMileage = parseInt(minMileageInput.value, 10);
-  const maxMileage = parseInt(maxMileageInput.value, 10);
+  const minMileageInput = document.getElementById('minMileage');
+  const maxMileageInput = document.getElementById('maxMileage');
+  const minMileageValue = parseInt(sliderMileage.dataset.min, 10);
+  const maxMileageValue = parseInt(sliderMileage.dataset.max, 10);
   const range = noUiSlider.create(sliderMileage, {
-      start: [minMileage, maxMileage],
+      start: [minMileageInput.value || minMileageValue, maxMileageInput.value || maxMileageValue],
       connect: true,
       step: 100,
       range: {
-          'min': minMileage,
-          'max': maxMileage
+          'min': minMileageValue,
+          'max': maxMileageValue
       }
   })
-  range.on('update', function (values, handle) {
+  range.on('slide', function (values, handle) {
+    filter.loadUrl(actionUrl + '?minMileage=' + values [0] + '&maxMileage=' + values[1]);
     if (handle === 0) {
-      minMileageInput.value = parseInt(values[0], 10);
+      minMileageInput.value = Math.round(values[0]);
     }
     if (handle === 1) {
-      maxMileageInput.value = parseInt(values[1], 10);
+      maxMileageInput.value = Math.round(values[1]);
     }
+  })
+  range.on('end', function (values, handle) {
+    minMileageInput.dispatchEvent(new Event('change'))
   });
 }
 
 if (sliderReleaseYear){
-  const minReleaseYear = parseInt(minReleaseYearInput.value, 10);
-  const maxReleaseYear = parseInt(maxReleaseYearInput.value, 10);
+  const minReleaseYearInput = document.getElementById('minReleaseYear');
+  const maxReleaseYearInput = document.getElementById('maxReleaseYear');
+  const minReleaseYearValue = parseInt(sliderReleaseYear.dataset.min, 10);
+  const maxReleaseYearValue = parseInt(sliderReleaseYear.dataset.max, 10);
   const range = noUiSlider.create(sliderReleaseYear, {
-    start: [minReleaseYear, maxReleaseYear],
+    start: [minReleaseYearInput.value || minReleaseYearValue, maxReleaseYearInput.value || maxReleaseYearValue],
     connect: true,
     step: 1,
     range: {
-      'min': minReleaseYear,
-      'max': maxReleaseYear
+      'min': minReleaseYearValue,
+      'max': maxReleaseYearValue
     }
   })
-  range.on('update', function (values, handle) {
+  range.on('slide', function (values, handle) {
+    filter.loadUrl(actionUrl + '?minReleaseYear=' + values [0] + '&maxReleaseYear=' + values[1]);
     if (handle === 0) {
-      minReleaseYearInput.value = parseInt(values[0], 10);
+      minReleaseYearInput.value = Math.round(values[0]);
     }
     if (handle === 1) {
-      maxReleaseYearInput.value = parseInt(values[1], 10);
+      maxReleaseYearInput.value = Math.round(values[1]);
     }
+  })
+  range.on('end', function (values, handle) {
+    minReleaseYearInput.dispatchEvent(new Event('change'))
   });
 }
 
 if (sliderPrice){
-  const minPrice = parseInt(minPriceInput.value, 10);
-  const maxPrice = parseInt(maxPriceInput.value, 10);
+  const minPriceInput = document.getElementById('minPrice');
+  const maxPriceInput = document.getElementById('maxPrice');
+  const minPriceValue = parseInt(sliderPrice.dataset.min, 10);
+  const maxPriceValue = parseInt(sliderPrice.dataset.max, 10);
   const range = noUiSlider.create(sliderPrice, {
-      start: [minPrice, maxPrice],
+      start: [minPriceInput.value || minPriceValue, maxPriceInput.value || maxPriceValue],
       connect: true,
       step: 100,
       range: {
-          'min': minPrice,
-          'max': maxPrice
+          'min': minPriceValue,
+          'max': maxPriceValue
       }
   })
-  range.on('update', function (values, handle) {
+  range.on('slide', function (values, handle) {
+    filter.loadUrl(actionUrl + '?minPrice=' + values [0] + '&maxPrice=' + values[1]);
     if (handle === 0) {
-      minPriceInput.value = parseInt(values[0], 10);
+      minPriceInput.value = Math.round(values[0]);
     }
     if (handle === 1) {
-      maxPriceInput.value = parseInt(values[1], 10);
+      maxPriceInput.value = Math.round(values[1]);
     }
+  })
+  range.on('end', function (values, handle) {
+    minPriceInput.dispatchEvent(new Event('change'))
   });
 }
 
@@ -122,4 +132,3 @@ if (barBetweenHandlesReleaseYear) {
 if (barBetweenHandlesPrice) {
     barBetweenHandlesPrice.style.background = '#D92332';
 }
-

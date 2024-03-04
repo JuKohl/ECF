@@ -1,0 +1,19 @@
+{% for car in cars %}
+<div class="col-md-4 my-2 d-flex">
+    <div class="card w-100">
+      {% if car.imageName %}
+        <img src="{{ vich_uploader_asset(car, 'imageFile') }}" class="card-img-top" alt="photo de {{ car.brand }}">
+        {% else %}
+        <img src="{{ asset('build/images/default_image.png') }}" class="card-img-top" alt="photo de {{ car.brand }}">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ car.brand }}</h5>
+        <p class="card-text">{{ car.model }}</p>
+        <p class="card-text">{{ car.releaseYear }}</p>
+        <p class="card-text">{{ car.price }} €</p>
+        <p class="card-text">{{ car.mileage }} km</p>
+        <a href="{{ path('app_cars_show', {'id': car.id}) }}" class="btn btn-primary btn-contact">Plus de détails</a>
+      </div>
+    </div>
+</div>
+{% endfor %}

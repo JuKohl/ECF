@@ -5,66 +5,56 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container mt-4">
-    <form class="row d-flex justify-content-between mb-4">
-      <div class="form-group col-md-3">
+  <div class="container mt-4 js-filter">
+    <div class="row d-flex justify-content-between mb-4">
+      <div class="form-group col-md-3 js-filter-form">
         <label for="filterMileage" class="form-label">Kilométrage :</label>
         <div id="mileage-slider" data-min="{{ minMaxValues.minMileage }}" data-max="{{ minMaxValues.maxMileage }}">
         </div>
         <div class="row align-items-center mt-4">
-          <div class="col-auto">
-            <label for="minMileage" class="col-form-label">Min:</label>
-          </div>
-          <div class="col">
+          <label for="minMileage" class="col-form-label col-2">Min:</label>
+          <div class="col-4">
             <input type="text" id="minMileage" value="{{ minMaxValues.minMileage }}" readonly class="form-control">
           </div>
-          <div class="col-auto">
-            <label for="maxMileage" class="col-form-label">Max:</label>
-          </div>
-          <div class="col">
+          <label for="maxMileage" class="col-form-label col-2">Max:</label>
+          <div class="col-4">
             <input type="text" id="maxMileage" value="{{ minMaxValues.maxMileage }}" readonly class="form-control">
           </div>
         </div>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-3 js-filter-form">
         <label for="filterYear" class="form-label">Année :</label>
         <div id="releaseYear-slider" data-min="{{ minMaxValues.minReleaseYear }}" data-max="{{ minMaxValues.maxReleaseYear }}">
         </div>
         <div class="row align-items-center mt-4">
-          <div class="col-auto">
-            <label for="minReleaseYear" class="col-form-label">Min:</label>
-          </div>
-          <div class="col">
+          <label for="minReleaseYear" class="col-form-label col-2">Min:</label>
+          <div class="col-4">
             <input type="text" id="minReleaseYear" value="{{ minMaxValues.minReleaseYear }}" readonly class="form-control">
           </div>
-          <div class="col-auto">
-            <label for="maxReleaseYear" class="col-form-label">Max:</label>
-          </div>
-          <div class="col">
+          <label for="maxReleaseYear" class="col-form-label col-2">Max:</label>
+          <div class="col-4">
             <input type="text" id="maxReleaseYear" value="{{ minMaxValues.maxReleaseYear }}" readonly class="form-control">
           </div>
         </div>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-3 js-filter-form">
         <label for="filterPrice" class="form-label">Prix :</label>
         <div id="price-slider" data-min="{{ minMaxValues.minPrice }}" data-max="{{ minMaxValues.maxPrice }}">
         </div>
         <div class="row align-items-center mt-4">
-          <div class="col-auto">
-            <label for="minPrice" class="col-form-label">Min:</label>
-          </div>
-          <div class="col">
+          <label for="minPrice" class="col-form-label col-2">Min:</label>
+          <div class="col-4">
             <input type="text" id="minPrice" value="{{ minMaxValues.minPrice }}" readonly class="form-control">
           </div>
-          <div class="col-auto">
-            <label for="maxPrice" class="col-form-label">Max:</label>
-          </div>
-          <div class="col">
+          <label for="maxPrice" class="col-form-label col-2">Max:</label>
+          <div class="col-4">
             <input type="text" id="maxPrice" value="{{ minMaxValues.maxPrice }}" readonly class="form-control">
           </div>
         </div>
       </div>
-    </form>
+    </div>
+
+  <div data-action-url="{{ path('app_filterCars' )}}">
   </div>
 
   {% if not cars.items is same as ([]) %}
@@ -76,13 +66,13 @@
       {{ form(form) }}
     {% endif %}
 
-    <div class="showCar row text-center">
+    <div class="showCar row text-center js-filter-content" id="filterForm">
       {% for car in cars %}
         {% include "partials/_cars.html.twig" with {'car' : car} %}
       {% endfor %}
     </div>
-
-    <div class="navigation d-flex justify-content-center mt-4">
+    
+    <div class="navigation d-flex justify-content-center mt-4 js-filter-pagination">
       {{ knp_pagination_render(cars) }}
     </div>
       {% else %}
@@ -90,5 +80,5 @@
       <h3>Il n'y a pas de voiture de disponible à la vente.</h3>
     </div>
   {% endif %}
-
+  </div>
 {% endblock %}
