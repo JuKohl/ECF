@@ -27,11 +27,12 @@ import noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import Filter from './modules/Filter';
 
-const filter = new Filter(document.querySelector('.js-filter'));
-const actionUrl = document.querySelector('[data-action-url]').getAttribute('data-action-url');
 const sliderMileage = document.getElementById('mileage-slider');
 const sliderReleaseYear = document.getElementById('releaseYear-slider');
 const sliderPrice = document.getElementById('price-slider');
+
+const filter = new Filter(document.querySelector('.js-filter'));
+const actionUrl = document.querySelector('[data-action-url]').getAttribute('data-action-url');
 
 if (sliderMileage){
   const minMileageInput = document.getElementById('minMileage');
