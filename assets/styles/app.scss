@@ -89,7 +89,6 @@ header,
   color: $light;
 }
 
-
 .navbar,
 h1,h2,h3,h5,
 .footer-local-owner {
@@ -156,13 +155,6 @@ h1,h2,h3,h5,
   margin-top: 1rem;
 }
 
-// carousel
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: $primary;
-  border-radius: 50%;
-}
-
 .rate > label {
   float:right;
   width:1em;
@@ -176,6 +168,13 @@ h1,h2,h3,h5,
 .rate > label.filled,
 .rate > label.filled ~ label {
   color: #ffc700;
+}
+
+// carousel
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: $primary;
+  border-radius: 50%;
 }
 
 // footer
