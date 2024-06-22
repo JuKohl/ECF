@@ -54,17 +54,20 @@ header,
 }
 
 .btn-contact,
-.btn-primary {
+.btn-primary,
+.myAdviceBtn {
   background: $primary;
 }
 
-.btn-primary {
+.btn-primary,
+.myAdviceBtn {
   color: $ligth;
   box-shadow: none;
   border: none;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.myAdviceBtn:hover {
   background: rgba(217, 35, 50, 0.9);
   box-shadow: none;
 }

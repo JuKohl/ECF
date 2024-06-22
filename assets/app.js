@@ -10,18 +10,45 @@ import './styles/app.scss'
 
 // app.js
 
-const $ = require('jquery');
+// const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
-require('bootstrap');
+// require('bootstrap');
 
-// or you can include specific pieces
-require('bootstrap/js/dist/tooltip');
-require('bootstrap/js/dist/popover');
+// // or you can include specific pieces
+// require('bootstrap/js/dist/tooltip');
+// require('bootstrap/js/dist/popover');
 
-//$(document).ready(function() {
-//    $('[data-toggle="popover"]').popover();
-//});
+// $(document).ready(function() {
+//   $('[data-toggle="popover"]').popover();
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const clearCartBtn = document.getElementById('clear-cart-btn');
+  const modal = document.getElementById('modalChoice');
+  const closeModal = document.querySelector('.close');
+  const cancelClear = document.getElementById('cancel-clear');
+
+  
+  clearCartBtn.addEventListener('click', (event) => {
+    event.preventDefault(); 
+    modal.style.display = 'block'; 
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  cancelClear.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
 
 import noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
